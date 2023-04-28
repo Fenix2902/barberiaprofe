@@ -1,9 +1,10 @@
+//import 'animate.css'
 export function Menu() {
 
     return (
 
         <>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+            <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top animate__animated animate__bounce">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <i className="bi bi-scissors"></i>

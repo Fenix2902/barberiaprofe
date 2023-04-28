@@ -9,13 +9,13 @@ export function Agenda() {
                 <div className="row">
                     <div className="col-12 col-md-6">
                         <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon1">@</span>
+                            <span className="input-group-text bi bi-person-circle" id="basic-addon1"></span>
                             <input type="text" className="form-control" placeholder="Nombre Cliente" />
                         </div>
                     </div>
                     <div className="col-12 col-md-6">
                         <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon1">@</span>
+                            <span className="input-group-text bi bi-envelope-at-fill" id="basic-addon1"></span>
                             <input type="text" className="form-control" placeholder="Correo cliente" />
                         </div>
                     </div>
@@ -24,7 +24,7 @@ export function Agenda() {
                 <div className="row">
                     <div className="col-12">
                         <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon1">@</span>
+                            <span className="input-group-text bi bi-telephone-fill" id="basic-addon1"></span>
                             <input type="text" className="form-control" placeholder="Telefono Cliente" />
                         </div>
                     </div>
@@ -33,13 +33,13 @@ export function Agenda() {
                 <div className="row">
                     <div className="col-12 col-md-6">
                         <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon1">@</span>
-                            <input type="date" className="form-control" placeholder="Telefono Cliente" />
+                            <span className="input-group-text bi bi-calendar-week-fill" id="basic-addon1"></span>
+                            <input type="date" className="form-control" placeholder="fecha Cita" />
                         </div>
                     </div>
                     <div className="col-12 col-md-6">
                         <div className="input-group mb-3">
-                            <span className="input-group-text" id="basic-addon1">@</span>
+                            <span className="input-group-text bi bi-alarm-fill" id="basic-addon1"></span>
                             <select className="form-select"  defaultValue={'DEFAULT'}>
                                 <option value="DEFAULT">Hora:</option>
                                 <option value="1">6:30 am</option>
