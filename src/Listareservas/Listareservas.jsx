@@ -7,12 +7,16 @@ export function Listareservas() {
   const [reservas, setReserva] = useState(null);
   const [carga, setCarga] = useState(true);
 
+  const tipofiltrado = 1;
+
   //programo el useEffect para garantizar que llamare al servicio solo cuando cargue mi componente
 
   useEffect(function () {
     consultarReservas().then(function (respuestaDelBack) {
-      console.log(respuestaDelBack.reservas);
-      setReserva(respuestaDelBack.reservas);
+      const reservasFiltradas = respuestaDelBack.reservas.filter(
+        reserva => reserva.tipo === tipofiltrado
+      );
+      setReserva(reservasFiltradas);
       setCarga(false);
     });
   }, []);
@@ -40,6 +44,7 @@ export function Listareservas() {
                       <h5>Dia: {reserva.dia}</h5>
                       <h5>Hora: {reserva.hora}</h5>
                       <h5>Telefono: {reserva.telefono}</h5>
+                      <h5>Tipo: {reserva.tipo}</h5>
                     </div>
                   </div>
                 </div>

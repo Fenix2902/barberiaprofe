@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { agendarCita } from "../services/servicioAgendar";
+
 
 export function Agenda() {
   const [nombre, setNombre] = useState(null);
   const [correo, setCorreo] = useState(null);
   const [telefono, setTelefono] = useState(null);
-  const [fecha, setFecha] = useState(null);
+  const [fecha, setfecha] = useState(null);
   const [hora, setHora] = useState(null);
+  
 
   const [errores, setErrores] = useState({});
+  const [envioFormulario, setEnvioFormulario] = useState(false);
 
   useEffect(
     function () {
@@ -19,20 +23,31 @@ export function Agenda() {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Something went wrong!",
+          text: "Recuerda Diligenciar todos los Datos!",
         });
-      } else {
-        //no hay errores
+      } else if(envioFormulario){
+        let datosEnvio={
+          nombre,
+          correo,
+          telefono,
+          hora,
+          dia:fecha,
+          tipo:1
+        }
+        console.log(datosEnvio)
+        agendarCita(datosEnvio).then(function(respuesta){
+          console.log(respuesta)
+        })
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Your work has been saved",
+          title: "Se ha Agendado tú cita",
           showConfirmButton: false,
           timer: 1500,
         });
       }
     },
-    [errores]
+    [errores,envioFormulario]
   );
 
   function validarFormulario(evento) {
@@ -48,12 +63,15 @@ export function Agenda() {
       listaErrores.telefono = "El telefono es obligatorio";
     }
     if (!fecha) {
-      listaErrores.fecha = "La fecha es obligatorio";
+      listaErrores.dia = "La fecha es obligatorio";
     }
     if (!hora) {
       listaErrores.hora = "La hora es obligatorio";
     }
     setErrores(listaErrores);
+    if(Object.keys(listaErrores).length == 0){
+      setEnvioFormulario(true)
+    }
   }
 
   return (
@@ -142,7 +160,7 @@ export function Agenda() {
                 value={fecha}
                 placeholder="fecha Cita"
                 onChange={(evento) => {
-                  setFecha(evento.target.value);
+                  setfecha(evento.target.value);
                 }}
               />
             </div>
